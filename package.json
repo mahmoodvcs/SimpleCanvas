@@ -10,11 +10,10 @@
   },
   "keywords": [
     "Canvas",
-    "Typescript",
-    "Wrapper"
+    "Typescript"
   ],
   "author": "Mahmood Dehghan",
-  "license": "MIT",
+  "license": "GNU GPL v3",
   "devDependencies": {
     "awesome-typescript-loader": "^5.0.0",
     "shx": "^0.2.2",

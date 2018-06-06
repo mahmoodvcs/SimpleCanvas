@@ -8,28 +8,26 @@ export default class SimpleCanvas {
             containerElement = container;
 
         if (containerElement.tagName == "CANVAS") {
-            this.mainCanvas = containerElement as HTMLCanvasElement;
+            this.canvas = containerElement as HTMLCanvasElement;
         }
         else {
-            this.mainCanvas = document.createElement("canvas");
-            var dimmentions = containerElement.getBoundingClientRect()
-            this.mainCanvas.width = dimmentions.width;
-            this.mainCanvas.height = dimmentions.height;
+            this.canvas = document.createElement("canvas");
+            var dimensions = containerElement.getBoundingClientRect()
+            this.canvas.width = dimensions.width;
+            this.canvas.height = dimensions.height;
         }
-        this.mainContext = this.mainCanvas.getContext("2d");
+        this.context = this.canvas.getContext("2d");
     }
 
     //#region Member variables
 
-    mainCanvas: HTMLCanvasElement;
-    mainContext: CanvasRenderingContext2D;
-    tempCanvas: HTMLCanvasElement = null;
-    tempContext: CanvasRenderingContext2D = null;
+    canvas: HTMLCanvasElement;
+    context: CanvasRenderingContext2D;
 
     //#endregion
 
     drawRect(x: number, y: number, width: number, height: number, strokeColor: string = "black", lineWidth: number = 1, fillColor: string = "", alpha: number = 1) {
-        var context = this.mainContext;
+        var context = this.context;
         context.globalAlpha = alpha;
         if (fillColor) {
             context.fillStyle = fillColor;
@@ -42,7 +40,7 @@ export default class SimpleCanvas {
         }
     }
     drawLine(x1: number, y1: number, x2: number, y2: number, color: string = "black", lineWidth: number = 1, alpha: number = 1) {
-        var context = this.mainContext;
+        var context = this.context;
         context.globalAlpha = alpha;
         context.beginPath();
         context.moveTo(x1, y1);
@@ -54,7 +52,7 @@ export default class SimpleCanvas {
         }
     }
     drawCircle(x: number, y: number, radius: number, strokeColor: string = "black", lineWidth: number = 1, fillColor: string = "", alpha: number = 1) {
-        var context = this.mainContext;
+        var context = this.context;
         context.beginPath();
         context.lineWidth = lineWidth;
         context.globalAlpha = alpha;
@@ -70,7 +68,7 @@ export default class SimpleCanvas {
         }
     }
     drawImage(src: string, x: number, y: number, width: number, height: number, alpha: number = 1) {
-        var context = this.mainContext;
+        var context = this.context;
         var img = new Image();
         img.src = src;
         context.globalAlpha = alpha;
